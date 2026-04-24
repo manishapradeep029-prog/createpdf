@@ -1,0 +1,25 @@
+package com.example.pdf;
+
+import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.kernel.pdf.PdfDocument;
+import com.itextpdf.layout.Document;
+import com.itextpdf.layout.element.Paragraph;
+
+public class App {
+    public static void main(String[] args) {
+        String dest = "output.pdf";
+
+        try {
+            PdfWriter writer = new PdfWriter(dest);
+            PdfDocument pdf = new PdfDocument(writer);
+            Document document = new Document(pdf);
+
+            document.add(new Paragraph("Hello, PDF from Java!"));
+            document.close();
+
+            System.out.println("PDF created successfully!");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
